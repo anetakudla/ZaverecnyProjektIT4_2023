@@ -1,3 +1,4 @@
+using System.Data.SqlClient;
 namespace ZaverecnyProjektIT4_2023
 {
     public partial class Form1 : Form
@@ -5,6 +6,12 @@ namespace ZaverecnyProjektIT4_2023
         public Form1()
         {
             InitializeComponent();
+        }
+        
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
