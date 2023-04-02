@@ -16,7 +16,6 @@ namespace ZaverecnyProjektIT4_2023
         {
             byte[] salt;
             byte[] hash;
-
             HMACSHA512 hmac = new HMACSHA512();
 
             hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
