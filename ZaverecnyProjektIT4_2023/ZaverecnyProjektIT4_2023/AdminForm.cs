@@ -188,5 +188,12 @@ namespace ZaverecnyProjektIT4_2023
 
             LoadConracts();
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm login = new LoginForm();
+            login.Show();
+        }
     }
 }
