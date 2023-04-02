@@ -36,5 +36,28 @@ namespace ZaverecnyProjektIT4_2023
                 sqlConnection.Close();
             }
         }
+
+        public User? LoginUser(string username)
+        {
+            User? user = null;
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = "select * from [User]f where Username=@Username";
+                    cmd.Parameters.AddWithValue("Username", username);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            user = new User((int)reader["Id"],reader["Username"].ToString(), (byte[])reader["PasswordHash"], (byte[])reader["PasswordSalt"], reader["Role"].ToString());
+                        }
+                    }
+                }
+                sqlConnection.Close();
+            }
+            return user;
+        }
     }
 }
