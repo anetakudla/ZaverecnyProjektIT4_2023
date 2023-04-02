@@ -47,7 +47,10 @@ namespace ZaverecnyProjektIT4_2023
         }
         private void buttonAddUser_Click(object sender, EventArgs e)
         {
-
+            AddUser addUser = new AddUser();
+            var result = addUser.ShowDialog();
+            if (result == DialogResult.OK)
+                LoadUsers();
         }
         private void buttonEditUser_Click(object sender, EventArgs e)
         {
@@ -79,6 +82,13 @@ namespace ZaverecnyProjektIT4_2023
         {
             LoadEmployees();
         }
+        private void buttonAddEmployee_Click(object sender, EventArgs e)
+        {
+            AddEmployee addEmployee = new AddEmployee();
+            var result = addEmployee.ShowDialog();
+            if (result == DialogResult.OK)
+                LoadEmployees();
+        }
         private void buttonDeleteEmployee_Click(object sender, EventArgs e)
         {
             var row = listViewEmployees.SelectedItems[0];
@@ -104,6 +114,13 @@ namespace ZaverecnyProjektIT4_2023
         private void textBoxSearchWorks_TextChanged(object sender, EventArgs e)
         {
             LoadWorks();
+        }
+        private void buttonAddWork_Click(object sender, EventArgs e)
+        {
+            AddWork addWork = new AddWork();
+            var result = addWork.ShowDialog();
+            if (result == DialogResult.OK)
+                LoadWorks();
         }
         private void buttonDeleteWork_Click(object sender, EventArgs e)
         {

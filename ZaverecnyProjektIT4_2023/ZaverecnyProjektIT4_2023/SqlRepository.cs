@@ -12,17 +12,6 @@ namespace ZaverecnyProjektIT4_2023
     {
         private string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ZaverecnyProjekt;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        /*Metoda, která registruje uživatele je na ni potřeba volat v jínem formuláři
-         
-        SqlRepository sql;
-        sql = new SqlRepository();
-
-        Poté na stisknutí tlačítka na ní zavolat
-
-        sql.RegisterUser(); - do závorek vložit text z textboxu např: txtUsername.Text, txtPassword.Text
-
-        */
-
         public User? LoginUser(string username)
         {
             User? user = null;
@@ -72,7 +61,7 @@ namespace ZaverecnyProjektIT4_2023
             }
             return users;
         }
-        public void AddUser(string username, string password)
+        public void AddUser(string username, string password, string role)
         {
             byte[] salt;
             byte[] hash;
@@ -90,7 +79,7 @@ namespace ZaverecnyProjektIT4_2023
                     cmd.Parameters.AddWithValue("username", username);
                     cmd.Parameters.AddWithValue("hash", hash);
                     cmd.Parameters.AddWithValue("salt", salt);
-                    cmd.Parameters.AddWithValue("role", "admin");
+                    cmd.Parameters.AddWithValue("role", role);
                     cmd.ExecuteNonQuery();
                 }
                 sqlConnection.Close();
@@ -136,6 +125,25 @@ namespace ZaverecnyProjektIT4_2023
             }
             return employees;
         }
+        public void AddEmployee(string job, string firstname, string lastname, string date, string email, string phone)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = "INSERT INTO [Employee] (Job,Firstname, Lastname, BirthDate, Email, Phone) values(@job,@firstname,@lastname,@date,@email,@phone)";
+                    cmd.Parameters.AddWithValue("job", job);
+                    cmd.Parameters.AddWithValue("firstname", firstname);
+                    cmd.Parameters.AddWithValue("lastname", lastname);
+                    cmd.Parameters.AddWithValue("date", Convert.ToDateTime(date));
+                    cmd.Parameters.AddWithValue("email", email);
+                    cmd.Parameters.AddWithValue("phone", phone);
+                    cmd.ExecuteNonQuery();
+                }
+                sqlConnection.Close();
+            }
+        }
         public void DeleteEmployee(int id)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
@@ -173,6 +181,21 @@ namespace ZaverecnyProjektIT4_2023
                 sqlConnection.Close();
             }
             return works;
+        }
+        public void AddWork(string name, string description)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = "INSERT INTO [Work] (Name,Description) values(@name,@description)";
+                    cmd.Parameters.AddWithValue("name", name);
+                    cmd.Parameters.AddWithValue("description", description);
+                    cmd.ExecuteNonQuery();
+                }
+                sqlConnection.Close();
+            }
         }
         public void DeleteWork(int id)
         {

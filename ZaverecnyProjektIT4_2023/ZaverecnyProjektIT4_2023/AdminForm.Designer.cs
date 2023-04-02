@@ -40,7 +40,7 @@
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonAddEmployee = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.buttonDeleteEmployee = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,7 +55,7 @@
             this.columnHeader10 = new System.Windows.Forms.ColumnHeader();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonAddWork = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.buttonDeleteWork = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -71,12 +71,18 @@
             this.button9 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.listView4 = new System.Windows.Forms.ListView();
+            this.listViewContracts = new System.Windows.Forms.ListView();
             this.label8 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.button10 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.columnHeader14 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader15 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader16 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader17 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader18 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader19 = new System.Windows.Forms.ColumnHeader();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -186,7 +192,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.buttonAddEmployee);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.buttonDeleteEmployee);
             this.panel2.Controls.Add(this.label3);
@@ -198,14 +204,15 @@
             this.panel2.Size = new System.Drawing.Size(631, 426);
             this.panel2.TabIndex = 8;
             // 
-            // button1
+            // buttonAddEmployee
             // 
-            this.button1.Location = new System.Drawing.Point(510, 342);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Přidat";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonAddEmployee.Location = new System.Drawing.Point(510, 342);
+            this.buttonAddEmployee.Name = "buttonAddEmployee";
+            this.buttonAddEmployee.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddEmployee.TabIndex = 7;
+            this.buttonAddEmployee.Text = "Přidat";
+            this.buttonAddEmployee.UseVisualStyleBackColor = true;
+            this.buttonAddEmployee.Click += new System.EventHandler(this.buttonAddEmployee_Click);
             // 
             // button2
             // 
@@ -306,7 +313,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.Controls.Add(this.button4);
+            this.panel3.Controls.Add(this.buttonAddWork);
             this.panel3.Controls.Add(this.button5);
             this.panel3.Controls.Add(this.buttonDeleteWork);
             this.panel3.Controls.Add(this.label5);
@@ -318,14 +325,15 @@
             this.panel3.Size = new System.Drawing.Size(304, 297);
             this.panel3.TabIndex = 8;
             // 
-            // button4
+            // buttonAddWork
             // 
-            this.button4.Location = new System.Drawing.Point(187, 213);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Přidat";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonAddWork.Location = new System.Drawing.Point(187, 213);
+            this.buttonAddWork.Name = "buttonAddWork";
+            this.buttonAddWork.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddWork.TabIndex = 7;
+            this.buttonAddWork.Text = "Přidat";
+            this.buttonAddWork.UseVisualStyleBackColor = true;
+            this.buttonAddWork.Click += new System.EventHandler(this.buttonAddWork_Click);
             // 
             // button5
             // 
@@ -408,7 +416,7 @@
             this.panel4.Controls.Add(this.button9);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.textBox4);
-            this.panel4.Controls.Add(this.listView4);
+            this.panel4.Controls.Add(this.listViewContracts);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Location = new System.Drawing.Point(322, 444);
             this.panel4.Name = "panel4";
@@ -458,16 +466,23 @@
             this.textBox4.Size = new System.Drawing.Size(105, 23);
             this.textBox4.TabIndex = 3;
             // 
-            // listView4
+            // listViewContracts
             // 
-            this.listView4.FullRowSelect = true;
-            this.listView4.GridLines = true;
-            this.listView4.Location = new System.Drawing.Point(0, 27);
-            this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(388, 270);
-            this.listView4.TabIndex = 2;
-            this.listView4.UseCompatibleStateImageBehavior = false;
-            this.listView4.View = System.Windows.Forms.View.Details;
+            this.listViewContracts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader14,
+            this.columnHeader15,
+            this.columnHeader16,
+            this.columnHeader17,
+            this.columnHeader18,
+            this.columnHeader19});
+            this.listViewContracts.FullRowSelect = true;
+            this.listViewContracts.GridLines = true;
+            this.listViewContracts.Location = new System.Drawing.Point(0, 27);
+            this.listViewContracts.Name = "listViewContracts";
+            this.listViewContracts.Size = new System.Drawing.Size(388, 270);
+            this.listViewContracts.TabIndex = 2;
+            this.listViewContracts.UseCompatibleStateImageBehavior = false;
+            this.listViewContracts.View = System.Windows.Forms.View.Details;
             // 
             // label8
             // 
@@ -518,6 +533,30 @@
             this.label9.TabIndex = 2;
             this.label9.Text = "Uživatel";
             // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "ContractId";
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Work";
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "Employee";
+            // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "CustomerName";
+            // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "Date";
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "Hours";
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -557,7 +596,7 @@
         private ListView listViewUsers;
         private Label label1;
         private Panel panel2;
-        private Button button1;
+        private Button buttonAddEmployee;
         private Button button2;
         private Button buttonDeleteEmployee;
         private Label label3;
@@ -565,7 +604,7 @@
         private ListView listViewEmployees;
         private Label label4;
         private Panel panel3;
-        private Button button4;
+        private Button buttonAddWork;
         private Button button5;
         private Button buttonDeleteWork;
         private Label label5;
@@ -578,7 +617,7 @@
         private Button button9;
         private Label label7;
         private TextBox textBox4;
-        private ListView listView4;
+        private ListView listViewContracts;
         private Label label8;
         private Panel panel5;
         private Button button10;
@@ -597,5 +636,11 @@
         private ColumnHeader columnHeader11;
         private ColumnHeader columnHeader12;
         private ColumnHeader columnHeader13;
+        private ColumnHeader columnHeader14;
+        private ColumnHeader columnHeader15;
+        private ColumnHeader columnHeader16;
+        private ColumnHeader columnHeader17;
+        private ColumnHeader columnHeader18;
+        private ColumnHeader columnHeader19;
     }
 }

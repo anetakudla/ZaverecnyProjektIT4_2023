@@ -25,8 +25,8 @@ namespace ZaverecnyProjektIT4_2023
                     }
                     else if (user.Role == "user") ;
                     {
-                        LoginForm login = new LoginForm();
-                        login.Show();
+                        UserForm userF = new UserForm();
+                        userF.Show();
                         this.Hide();
                         return;
                     }
