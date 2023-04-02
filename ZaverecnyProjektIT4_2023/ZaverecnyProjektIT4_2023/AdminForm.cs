@@ -56,7 +56,10 @@ namespace ZaverecnyProjektIT4_2023
         }
         private void buttonEditUser_Click(object sender, EventArgs e)
         {
-
+            EditUser editUser = new EditUser(users[listViewUsers.SelectedIndices[0]]);
+            var result = editUser.ShowDialog();
+            if (result == DialogResult.OK)
+                LoadUsers();
         }
         private void buttonDeleteUser_Click(object sender, EventArgs e)
         {
@@ -91,6 +94,16 @@ namespace ZaverecnyProjektIT4_2023
             if (result == DialogResult.OK)
                 LoadEmployees();
         }
+        private void buttonEditEmployee_Click(object sender, EventArgs e)
+        {
+            EditEmployee editEmployee = new EditEmployee(employees[listViewEmployees.SelectedIndices[0]]);
+            var result = editEmployee.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                LoadEmployees();
+                LoadConracts();
+            }
+        }
         private void buttonDeleteEmployee_Click(object sender, EventArgs e)
         {
             var row = listViewEmployees.SelectedItems[0];
@@ -123,6 +136,16 @@ namespace ZaverecnyProjektIT4_2023
             var result = addWork.ShowDialog();
             if (result == DialogResult.OK)
                 LoadWorks();
+        }
+        private void buttonEditWork_Click(object sender, EventArgs e)
+        {
+            EditWork editWork = new EditWork(works[listViewWorks.SelectedIndices[0]]);
+            var result = editWork.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                LoadWorks();
+                LoadConracts();
+            }
         }
         private void buttonDeleteWork_Click(object sender, EventArgs e)
         {

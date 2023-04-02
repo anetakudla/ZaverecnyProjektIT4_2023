@@ -41,7 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonAddEmployee = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonEditEmployee = new System.Windows.Forms.Button();
             this.buttonDeleteEmployee = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxSearchEmployee = new System.Windows.Forms.TextBox();
@@ -56,7 +56,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonAddWork = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.buttonEditWork = new System.Windows.Forms.Button();
             this.buttonDeleteWork = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxSearchWorks = new System.Windows.Forms.TextBox();
@@ -66,8 +66,8 @@
             this.columnHeader13 = new System.Windows.Forms.ColumnHeader();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
             this.buttonAddContract = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.buttonDeleteContract = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxSearchContacts = new System.Windows.Forms.TextBox();
@@ -193,7 +193,7 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.Controls.Add(this.buttonAddEmployee);
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.buttonEditEmployee);
             this.panel2.Controls.Add(this.buttonDeleteEmployee);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.textBoxSearchEmployee);
@@ -214,14 +214,15 @@
             this.buttonAddEmployee.UseVisualStyleBackColor = true;
             this.buttonAddEmployee.Click += new System.EventHandler(this.buttonAddEmployee_Click_1);
             // 
-            // button2
+            // buttonEditEmployee
             // 
-            this.button2.Location = new System.Drawing.Point(511, 371);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Upravit";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonEditEmployee.Location = new System.Drawing.Point(511, 371);
+            this.buttonEditEmployee.Name = "buttonEditEmployee";
+            this.buttonEditEmployee.Size = new System.Drawing.Size(75, 23);
+            this.buttonEditEmployee.TabIndex = 6;
+            this.buttonEditEmployee.Text = "Upravit";
+            this.buttonEditEmployee.UseVisualStyleBackColor = true;
+            this.buttonEditEmployee.Click += new System.EventHandler(this.buttonEditEmployee_Click);
             // 
             // buttonDeleteEmployee
             // 
@@ -314,7 +315,7 @@
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
             this.panel3.Controls.Add(this.buttonAddWork);
-            this.panel3.Controls.Add(this.button5);
+            this.panel3.Controls.Add(this.buttonEditWork);
             this.panel3.Controls.Add(this.buttonDeleteWork);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.textBoxSearchWorks);
@@ -335,14 +336,15 @@
             this.buttonAddWork.UseVisualStyleBackColor = true;
             this.buttonAddWork.Click += new System.EventHandler(this.buttonAddWork_Click);
             // 
-            // button5
+            // buttonEditWork
             // 
-            this.button5.Location = new System.Drawing.Point(188, 242);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Upravit";
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonEditWork.Location = new System.Drawing.Point(188, 242);
+            this.buttonEditWork.Name = "buttonEditWork";
+            this.buttonEditWork.Size = new System.Drawing.Size(75, 23);
+            this.buttonEditWork.TabIndex = 6;
+            this.buttonEditWork.Text = "Upravit";
+            this.buttonEditWork.UseVisualStyleBackColor = true;
+            this.buttonEditWork.Click += new System.EventHandler(this.buttonEditWork_Click);
             // 
             // buttonDeleteWork
             // 
@@ -411,8 +413,8 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Control;
+            this.panel4.Controls.Add(this.label11);
             this.panel4.Controls.Add(this.buttonAddContract);
-            this.panel4.Controls.Add(this.button8);
             this.panel4.Controls.Add(this.buttonDeleteContract);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.textBoxSearchContacts);
@@ -423,24 +425,24 @@
             this.panel4.Size = new System.Drawing.Size(505, 297);
             this.panel4.TabIndex = 9;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(394, 69);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(100, 15);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "(podle Customer)";
+            // 
             // buttonAddContract
             // 
-            this.buttonAddContract.Location = new System.Drawing.Point(394, 213);
+            this.buttonAddContract.Location = new System.Drawing.Point(394, 242);
             this.buttonAddContract.Name = "buttonAddContract";
             this.buttonAddContract.Size = new System.Drawing.Size(75, 23);
             this.buttonAddContract.TabIndex = 7;
             this.buttonAddContract.Text = "Přidat";
             this.buttonAddContract.UseVisualStyleBackColor = true;
             this.buttonAddContract.Click += new System.EventHandler(this.buttonAddContract_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(394, 242);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 6;
-            this.button8.Text = "Upravit";
-            this.button8.UseVisualStyleBackColor = true;
             // 
             // buttonDeleteContract
             // 
@@ -600,7 +602,7 @@
         private Label label1;
         private Panel panel2;
         private Button buttonAddEmployee;
-        private Button button2;
+        private Button buttonEditEmployee;
         private Button buttonDeleteEmployee;
         private Label label3;
         private TextBox textBoxSearchEmployee;
@@ -608,7 +610,7 @@
         private Label label4;
         private Panel panel3;
         private Button buttonAddWork;
-        private Button button5;
+        private Button buttonEditWork;
         private Button buttonDeleteWork;
         private Label label5;
         private TextBox textBoxSearchWorks;
@@ -616,7 +618,6 @@
         private Label label6;
         private Panel panel4;
         private Button buttonAddContract;
-        private Button button8;
         private Button buttonDeleteContract;
         private Label label7;
         private TextBox textBoxSearchContacts;
@@ -645,5 +646,6 @@
         private ColumnHeader columnHeader17;
         private ColumnHeader columnHeader18;
         private ColumnHeader columnHeader19;
+        private Label label11;
     }
 }

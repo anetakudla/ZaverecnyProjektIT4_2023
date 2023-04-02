@@ -10,20 +10,25 @@ using System.Windows.Forms;
 
 namespace ZaverecnyProjektIT4_2023
 {
-    public partial class AddContract : Form
+    public partial class EditUser : Form
     {
         SqlRepository sql;
-        public AddContract()
+        string olduser = "";
+        public EditUser(User user)
         {
             InitializeComponent();
             sql = new SqlRepository();
+
+            olduser = user.Username;
+            textBoxUsername.Text = user.Username;
+            comboBoxRole.Text = user.Role.ToString();
         }
 
-        private void buttonAddContract_Click(object sender, EventArgs e)
+        private void buttonEditUser_Click(object sender, EventArgs e)
         {
-            if (textBoxWorkId.Text != "" && textBoxEmplyoeeId.Text != "" && textBoxCustomerName.Text != "" && textBoxHours.Text != "")
+            if (textBoxUsername.Text != "" && comboBoxRole.Text != "")
             {
-                sql.AddContract(textBoxWorkId.Text,textBoxEmplyoeeId.Text,textBoxCustomerName.Text, dateTimePicker.Value.ToString("dd.MM.yyyy"), textBoxHours.Text);
+                sql.EditUser(olduser.ToString(),textBoxUsername.Text, comboBoxRole.Text);
                 DialogResult = DialogResult.OK;
             }
             else
@@ -31,7 +36,6 @@ namespace ZaverecnyProjektIT4_2023
                 MessageBox.Show("Vyplňtě všechny okna");
             }
         }
-
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.Hide();

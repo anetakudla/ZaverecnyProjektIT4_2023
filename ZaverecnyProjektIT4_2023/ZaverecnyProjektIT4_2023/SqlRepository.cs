@@ -85,6 +85,22 @@ namespace ZaverecnyProjektIT4_2023
                 sqlConnection.Close();
             }
         }
+        public void EditUser(string oldusername ,string username, string role)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = "UPDATE [User] SET Username=@username, Role=@role WHERE Username=@oldusername";
+                    cmd.Parameters.AddWithValue("username", username);
+                    cmd.Parameters.AddWithValue("role", role);
+                    cmd.Parameters.AddWithValue("oldusername", oldusername);
+                    cmd.ExecuteNonQuery();
+                }
+                sqlConnection.Close();
+            }
+        }
         public void DeleteUser(int id)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
@@ -144,6 +160,26 @@ namespace ZaverecnyProjektIT4_2023
                 sqlConnection.Close();
             }
         }
+        public void EditEmployee(string id,string job, string firstname, string lastname, string date, string email, string phone)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = "UPDATE [Employee] SET Job=@job, Firstname=@firstname, Lastname=@lastname, Birthdate=@date, Email=@email, Phone=@phone WHERE EmployeeId=@id";
+                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.Parameters.AddWithValue("job", job);
+                    cmd.Parameters.AddWithValue("firstname", firstname);
+                    cmd.Parameters.AddWithValue("lastname", lastname);
+                    cmd.Parameters.AddWithValue("date", Convert.ToDateTime(date));
+                    cmd.Parameters.AddWithValue("email", email);
+                    cmd.Parameters.AddWithValue("phone", phone);
+                    cmd.ExecuteNonQuery();
+                }
+                sqlConnection.Close();
+            }
+        }
         public void DeleteEmployee(int id)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
@@ -192,6 +228,22 @@ namespace ZaverecnyProjektIT4_2023
                     cmd.CommandText = "INSERT INTO [Work] (Name,Description) values(@name,@description)";
                     cmd.Parameters.AddWithValue("name", name);
                     cmd.Parameters.AddWithValue("description", description);
+                    cmd.ExecuteNonQuery();
+                }
+                sqlConnection.Close();
+            }
+        }
+        public void EditWork(string id, string name, string description)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = "UPDATE [Work] SET Name=@name, Description=@description WHERE WorkId=@id";
+                    cmd.Parameters.AddWithValue("name", name);
+                    cmd.Parameters.AddWithValue("description", description);
+                    cmd.Parameters.AddWithValue("id", id);
                     cmd.ExecuteNonQuery();
                 }
                 sqlConnection.Close();

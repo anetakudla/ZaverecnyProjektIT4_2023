@@ -10,20 +10,25 @@ using System.Windows.Forms;
 
 namespace ZaverecnyProjektIT4_2023
 {
-    public partial class AddContract : Form
+    public partial class EditWork : Form
     {
+        string id;
         SqlRepository sql;
-        public AddContract()
+        public EditWork(Work work)
         {
             InitializeComponent();
             sql = new SqlRepository();
+
+            id = work.WorkId.ToString();
+            textBoxName.Text = work.Name;
+            textBoxDescription.Text = work.Description;
         }
 
-        private void buttonAddContract_Click(object sender, EventArgs e)
+        private void buttonEditWork_Click(object sender, EventArgs e)
         {
-            if (textBoxWorkId.Text != "" && textBoxEmplyoeeId.Text != "" && textBoxCustomerName.Text != "" && textBoxHours.Text != "")
+            if (textBoxName.Text != "" && textBoxDescription.Text != "")
             {
-                sql.AddContract(textBoxWorkId.Text,textBoxEmplyoeeId.Text,textBoxCustomerName.Text, dateTimePicker.Value.ToString("dd.MM.yyyy"), textBoxHours.Text);
+                sql.EditWork(id, textBoxName.Text, textBoxDescription.Text);
                 DialogResult = DialogResult.OK;
             }
             else
