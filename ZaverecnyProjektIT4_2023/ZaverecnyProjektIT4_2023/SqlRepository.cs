@@ -211,5 +211,65 @@ namespace ZaverecnyProjektIT4_2023
                 sqlConnection.Close();
             }
         }
+
+        public List<Contract> GetContracts(string search)
+        {
+            List<Contract> contracts = new List<Contract>();
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    //cmd.CommandText = "SELECT * FROM [User] WHERE USERNAME LIKE @search";
+                    cmd.CommandText = "SELECT Contract.ContractId,Contract.Employee,Work.Name, Employee.FirstName, Employee.LastName, Contract.CustomerName, Contract.DateAdded ,Contract.NumberOfHours FROM Contract JOIN Employee ON Contract.Employee = Employee.EmployeeId JOIN Work ON Contract.Work = Work.WorkId WHERE CustomerName LIKE @search;";
+                    cmd.Parameters.AddWithValue("search", "%" + search + "%");
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var contract = new Contract((int)reader["ContractId"], reader["Name"].ToString(),
+                                                            reader["LastName"].ToString(), reader["CustomerName"].ToString(),
+                                                            DateTime.Parse(reader["DateAdded"].ToString()), (int)reader["NumberOfHours"]);
+                            contracts.Add(contract);
+                        }
+                    }
+                }
+                sqlConnection.Close();
+            }
+            return contracts;
+        }
+        public void AddContract(string workid, string employeeid, string customername, string date, string hours)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = "INSERT INTO [Contract] (Work,Employee, CustomerName, DateAdded, NumberOfHours) values(@work,@employee,@customername,@date,@hours)";
+                    cmd.Parameters.AddWithValue("work", workid);
+                    cmd.Parameters.AddWithValue("employee", employeeid);
+                    cmd.Parameters.AddWithValue("customername", customername);
+                    cmd.Parameters.AddWithValue("date", Convert.ToDateTime(date));
+                    cmd.Parameters.AddWithValue("hours", hours);
+
+                    cmd.ExecuteNonQuery();
+                }
+                sqlConnection.Close();
+            }
+        }
+        public void DeleteContract(int id)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM [Contract] WHERE ContractId=@contractId";
+                    cmd.Parameters.AddWithValue("contractId", id);
+                    cmd.ExecuteNonQuery();
+                }
+                sqlConnection.Close();
+            }
+        }
     }
 }

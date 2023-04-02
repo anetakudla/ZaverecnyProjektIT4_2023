@@ -17,6 +17,7 @@ namespace ZaverecnyProjektIT4_2023
         private List<User> users;
         private List<Employee> employees;
         private List<Work> works;
+        private List<Contract> contracts;
         public AdminForm(User user)
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace ZaverecnyProjektIT4_2023
             LoadUsers();
             LoadEmployees();
             LoadWorks();
+            LoadConracts();
         }
 
         public void LoadUsers()
@@ -82,7 +84,7 @@ namespace ZaverecnyProjektIT4_2023
         {
             LoadEmployees();
         }
-        private void buttonAddEmployee_Click(object sender, EventArgs e)
+        private void buttonAddEmployee_Click_1(object sender, EventArgs e)
         {
             AddEmployee addEmployee = new AddEmployee();
             var result = addEmployee.ShowDialog();
@@ -130,6 +132,38 @@ namespace ZaverecnyProjektIT4_2023
             listViewWorks.SelectedItems[0].Remove();
 
             LoadWorks();
+        }
+        public void LoadConracts()
+        {
+            contracts = sql.GetContracts(textBoxSearchContacts.Text);
+            listViewContracts.Items.Clear();
+
+            foreach (var contract in contracts)
+            {
+                listViewContracts.Items.Add(contract.ToListViewItem());
+            }
+            listViewContracts.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listViewContracts.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+        private void textBoxSearchContacts_TextChanged(object sender, EventArgs e)
+        {
+            LoadConracts();
+        }
+        private void buttonAddContract_Click(object sender, EventArgs e)
+        {
+            AddContract addContract = new AddContract();
+            var result = addContract.ShowDialog();
+            if (result == DialogResult.OK)
+                LoadConracts();
+        }
+        private void buttonDeleteContract_Click(object sender, EventArgs e)
+        {
+            var row = listViewContracts.SelectedItems[0];
+            var id = row.SubItems[0].Text;
+            sql.DeleteContract(Convert.ToInt32(id));
+            listViewContracts.SelectedItems[0].Remove();
+
+            LoadConracts();
         }
     }
 }

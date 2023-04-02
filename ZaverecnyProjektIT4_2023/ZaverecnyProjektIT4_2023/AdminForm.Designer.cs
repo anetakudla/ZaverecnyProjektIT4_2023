@@ -66,23 +66,23 @@
             this.columnHeader13 = new System.Windows.Forms.ColumnHeader();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
+            this.buttonAddContract = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.buttonDeleteContract = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxSearchContacts = new System.Windows.Forms.TextBox();
             this.listViewContracts = new System.Windows.Forms.ListView();
-            this.label8 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.button10 = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.columnHeader14 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader15 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader16 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader17 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader18 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader19 = new System.Windows.Forms.ColumnHeader();
+            this.label8 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.button10 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -212,7 +212,7 @@
             this.buttonAddEmployee.TabIndex = 7;
             this.buttonAddEmployee.Text = "Přidat";
             this.buttonAddEmployee.UseVisualStyleBackColor = true;
-            this.buttonAddEmployee.Click += new System.EventHandler(this.buttonAddEmployee_Click);
+            this.buttonAddEmployee.Click += new System.EventHandler(this.buttonAddEmployee_Click_1);
             // 
             // button2
             // 
@@ -411,11 +411,11 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Control;
-            this.panel4.Controls.Add(this.button7);
+            this.panel4.Controls.Add(this.buttonAddContract);
             this.panel4.Controls.Add(this.button8);
-            this.panel4.Controls.Add(this.button9);
+            this.panel4.Controls.Add(this.buttonDeleteContract);
             this.panel4.Controls.Add(this.label7);
-            this.panel4.Controls.Add(this.textBox4);
+            this.panel4.Controls.Add(this.textBoxSearchContacts);
             this.panel4.Controls.Add(this.listViewContracts);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Location = new System.Drawing.Point(322, 444);
@@ -423,14 +423,15 @@
             this.panel4.Size = new System.Drawing.Size(505, 297);
             this.panel4.TabIndex = 9;
             // 
-            // button7
+            // buttonAddContract
             // 
-            this.button7.Location = new System.Drawing.Point(394, 213);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 7;
-            this.button7.Text = "Přidat";
-            this.button7.UseVisualStyleBackColor = true;
+            this.buttonAddContract.Location = new System.Drawing.Point(394, 213);
+            this.buttonAddContract.Name = "buttonAddContract";
+            this.buttonAddContract.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddContract.TabIndex = 7;
+            this.buttonAddContract.Text = "Přidat";
+            this.buttonAddContract.UseVisualStyleBackColor = true;
+            this.buttonAddContract.Click += new System.EventHandler(this.buttonAddContract_Click);
             // 
             // button8
             // 
@@ -441,14 +442,15 @@
             this.button8.Text = "Upravit";
             this.button8.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // buttonDeleteContract
             // 
-            this.button9.Location = new System.Drawing.Point(394, 271);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 5;
-            this.button9.Text = "Smazat";
-            this.button9.UseVisualStyleBackColor = true;
+            this.buttonDeleteContract.Location = new System.Drawing.Point(394, 271);
+            this.buttonDeleteContract.Name = "buttonDeleteContract";
+            this.buttonDeleteContract.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeleteContract.TabIndex = 5;
+            this.buttonDeleteContract.Text = "Smazat";
+            this.buttonDeleteContract.UseVisualStyleBackColor = true;
+            this.buttonDeleteContract.Click += new System.EventHandler(this.buttonDeleteContract_Click);
             // 
             // label7
             // 
@@ -459,12 +461,13 @@
             this.label7.TabIndex = 4;
             this.label7.Text = "Vyhledávání:";
             // 
-            // textBox4
+            // textBoxSearchContacts
             // 
-            this.textBox4.Location = new System.Drawing.Point(394, 43);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(105, 23);
-            this.textBox4.TabIndex = 3;
+            this.textBoxSearchContacts.Location = new System.Drawing.Point(394, 43);
+            this.textBoxSearchContacts.Name = "textBoxSearchContacts";
+            this.textBoxSearchContacts.Size = new System.Drawing.Size(105, 23);
+            this.textBoxSearchContacts.TabIndex = 3;
+            this.textBoxSearchContacts.TextChanged += new System.EventHandler(this.textBoxSearchContacts_TextChanged);
             // 
             // listViewContracts
             // 
@@ -483,6 +486,30 @@
             this.listViewContracts.TabIndex = 2;
             this.listViewContracts.UseCompatibleStateImageBehavior = false;
             this.listViewContracts.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "ContractId";
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Work";
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "Employee";
+            // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "CustomerName";
+            // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "Date";
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "Hours";
             // 
             // label8
             // 
@@ -532,30 +559,6 @@
             this.label9.Size = new System.Drawing.Size(63, 19);
             this.label9.TabIndex = 2;
             this.label9.Text = "Uživatel";
-            // 
-            // columnHeader14
-            // 
-            this.columnHeader14.Text = "ContractId";
-            // 
-            // columnHeader15
-            // 
-            this.columnHeader15.Text = "Work";
-            // 
-            // columnHeader16
-            // 
-            this.columnHeader16.Text = "Employee";
-            // 
-            // columnHeader17
-            // 
-            this.columnHeader17.Text = "CustomerName";
-            // 
-            // columnHeader18
-            // 
-            this.columnHeader18.Text = "Date";
-            // 
-            // columnHeader19
-            // 
-            this.columnHeader19.Text = "Hours";
             // 
             // AdminForm
             // 
@@ -612,11 +615,11 @@
         private ListView listViewWorks;
         private Label label6;
         private Panel panel4;
-        private Button button7;
+        private Button buttonAddContract;
         private Button button8;
-        private Button button9;
+        private Button buttonDeleteContract;
         private Label label7;
-        private TextBox textBox4;
+        private TextBox textBoxSearchContacts;
         private ListView listViewContracts;
         private Label label8;
         private Panel panel5;
