@@ -22,7 +22,7 @@ namespace ZaverecnyProjektIT4_2023
             Id = id;
             Username = username;
             Role = role;
-            sql.RegisterUser(username, password);
+            sql.AddUser(username, password);
         }
 
         public User(int id, string username, byte[] passwordHash, byte[] passwordSalt, string role)

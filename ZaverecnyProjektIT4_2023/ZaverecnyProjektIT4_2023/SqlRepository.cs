@@ -12,30 +12,16 @@ namespace ZaverecnyProjektIT4_2023
     {
         private string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ZaverecnyProjekt;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        public void RegisterUser(string username, string password)
-        {
-            byte[] salt;
-            byte[] hash;
-            HMACSHA512 hmac = new HMACSHA512();
+        /*Metoda, která registruje uživatele je na ni potřeba volat v jínem formuláři
+         
+        SqlRepository sql;
+        sql = new SqlRepository();
 
-            hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-            salt = hmac.Key;
+        Poté na stisknutí tlačítka na ní zavolat
 
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-            {
-                sqlConnection.Open();
-                using (SqlCommand cmd = sqlConnection.CreateCommand())
-                {
-                    cmd.CommandText = "INSERT INTO [User] (Username,PasswordHash,PasswordSalt, Role) values(@username,@hash,@salt,@role)";
-                    cmd.Parameters.AddWithValue("username", username);
-                    cmd.Parameters.AddWithValue("hash", hash);
-                    cmd.Parameters.AddWithValue("salt", salt);
-                    cmd.Parameters.AddWithValue("role", "admin");
-                    cmd.ExecuteNonQuery();
-                }
-                sqlConnection.Close();
-            }
-        }
+        sql.RegisterUser(); - do závorek vložit text z textboxu např: txtUsername.Text, txtPassword.Text
+
+        */
 
         public User? LoginUser(string username)
         {
@@ -86,6 +72,44 @@ namespace ZaverecnyProjektIT4_2023
             }
             return users;
         }
+        public void AddUser(string username, string password)
+        {
+            byte[] salt;
+            byte[] hash;
+            HMACSHA512 hmac = new HMACSHA512();
+
+            hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+            salt = hmac.Key;
+
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = "INSERT INTO [User] (Username,PasswordHash,PasswordSalt, Role) values(@username,@hash,@salt,@role)";
+                    cmd.Parameters.AddWithValue("username", username);
+                    cmd.Parameters.AddWithValue("hash", hash);
+                    cmd.Parameters.AddWithValue("salt", salt);
+                    cmd.Parameters.AddWithValue("role", "admin");
+                    cmd.ExecuteNonQuery();
+                }
+                sqlConnection.Close();
+            }
+        }
+        public void DeleteUser(int id)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM [User] WHERE Id=@id";
+                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.ExecuteNonQuery();
+                }
+                sqlConnection.Close();
+            }
+        }
 
         public List<Employee> GetEmployees(string search)
         {
@@ -112,7 +136,20 @@ namespace ZaverecnyProjektIT4_2023
             }
             return employees;
         }
-
+        public void DeleteEmployee(int id)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM [Employee] WHERE EmployeeId=@employeeId";
+                    cmd.Parameters.AddWithValue("employeeId", id);
+                    cmd.ExecuteNonQuery();
+                }
+                sqlConnection.Close();
+            }
+        }
         public List<Work> GetWorks(string search)
         {
             List<Work> works = new List<Work>();
@@ -136,6 +173,20 @@ namespace ZaverecnyProjektIT4_2023
                 sqlConnection.Close();
             }
             return works;
+        }
+        public void DeleteWork(int id)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM [Work] WHERE WorkId=@workId";
+                    cmd.Parameters.AddWithValue("workId", id);
+                    cmd.ExecuteNonQuery();
+                }
+                sqlConnection.Close();
+            }
         }
     }
 }

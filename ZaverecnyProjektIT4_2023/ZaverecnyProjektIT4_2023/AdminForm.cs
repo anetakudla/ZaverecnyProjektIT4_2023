@@ -45,6 +45,24 @@ namespace ZaverecnyProjektIT4_2023
         {
             LoadUsers();
         }
+        private void buttonAddUser_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void buttonEditUser_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void buttonDeleteUser_Click(object sender, EventArgs e)
+        {
+
+            var row = listViewUsers.SelectedItems[0];
+            var id = row.SubItems[0].Text;
+            sql.DeleteUser(Convert.ToInt32(id));
+            listViewUsers.SelectedItems[0].Remove();
+
+            LoadUsers();
+        }
         public void LoadEmployees()
         {
             employees = sql.GetEmployees(textBoxSearchEmployee.Text);
@@ -59,6 +77,15 @@ namespace ZaverecnyProjektIT4_2023
         }
         private void textBoxSearchEmployee_TextChanged(object sender, EventArgs e)
         {
+            LoadEmployees();
+        }
+        private void buttonDeleteEmployee_Click(object sender, EventArgs e)
+        {
+            var row = listViewEmployees.SelectedItems[0];
+            var id = row.SubItems[0].Text;
+            sql.DeleteEmployee(Convert.ToInt32(id));
+            listViewEmployees.SelectedItems[0].Remove();
+
             LoadEmployees();
         }
         public void LoadWorks()
@@ -76,6 +103,15 @@ namespace ZaverecnyProjektIT4_2023
 
         private void textBoxSearchWorks_TextChanged(object sender, EventArgs e)
         {
+            LoadWorks();
+        }
+        private void buttonDeleteWork_Click(object sender, EventArgs e)
+        {
+            var row = listViewWorks.SelectedItems[0];
+            var id = row.SubItems[0].Text;
+            sql.DeleteWork(Convert.ToInt32(id));
+            listViewWorks.SelectedItems[0].Remove();
+
             LoadWorks();
         }
     }

@@ -42,7 +42,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonDeleteEmployee = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxSearchEmployee = new System.Windows.Forms.TextBox();
             this.listViewEmployees = new System.Windows.Forms.ListView();
@@ -57,10 +57,13 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.buttonDeleteWork = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxSearchWorks = new System.Windows.Forms.TextBox();
             this.listViewWorks = new System.Windows.Forms.ListView();
+            this.columnHeader11 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader12 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader13 = new System.Windows.Forms.ColumnHeader();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
@@ -74,9 +77,6 @@
             this.button10 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.columnHeader11 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader12 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader13 = new System.Windows.Forms.ColumnHeader();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -107,6 +107,7 @@
             this.buttonAddUser.TabIndex = 7;
             this.buttonAddUser.Text = "Přidat";
             this.buttonAddUser.UseVisualStyleBackColor = true;
+            this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
             // 
             // buttonEditUser
             // 
@@ -116,6 +117,7 @@
             this.buttonEditUser.TabIndex = 6;
             this.buttonEditUser.Text = "Upravit";
             this.buttonEditUser.UseVisualStyleBackColor = true;
+            this.buttonEditUser.Click += new System.EventHandler(this.buttonEditUser_Click);
             // 
             // buttonDeleteUser
             // 
@@ -125,6 +127,7 @@
             this.buttonDeleteUser.TabIndex = 5;
             this.buttonDeleteUser.Text = "Smazat";
             this.buttonDeleteUser.UseVisualStyleBackColor = true;
+            this.buttonDeleteUser.Click += new System.EventHandler(this.buttonDeleteUser_Click);
             // 
             // label2
             // 
@@ -185,7 +188,7 @@
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.buttonDeleteEmployee);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.textBoxSearchEmployee);
             this.panel2.Controls.Add(this.listViewEmployees);
@@ -213,14 +216,15 @@
             this.button2.Text = "Upravit";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonDeleteEmployee
             // 
-            this.button3.Location = new System.Drawing.Point(511, 400);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Smazat";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonDeleteEmployee.Location = new System.Drawing.Point(511, 400);
+            this.buttonDeleteEmployee.Name = "buttonDeleteEmployee";
+            this.buttonDeleteEmployee.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeleteEmployee.TabIndex = 5;
+            this.buttonDeleteEmployee.Text = "Smazat";
+            this.buttonDeleteEmployee.UseVisualStyleBackColor = true;
+            this.buttonDeleteEmployee.Click += new System.EventHandler(this.buttonDeleteEmployee_Click);
             // 
             // label3
             // 
@@ -304,7 +308,7 @@
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
             this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.button5);
-            this.panel3.Controls.Add(this.button6);
+            this.panel3.Controls.Add(this.buttonDeleteWork);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.textBoxSearchWorks);
             this.panel3.Controls.Add(this.listViewWorks);
@@ -332,14 +336,15 @@
             this.button5.Text = "Upravit";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // buttonDeleteWork
             // 
-            this.button6.Location = new System.Drawing.Point(188, 271);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "Smazat";
-            this.button6.UseVisualStyleBackColor = true;
+            this.buttonDeleteWork.Location = new System.Drawing.Point(188, 271);
+            this.buttonDeleteWork.Name = "buttonDeleteWork";
+            this.buttonDeleteWork.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeleteWork.TabIndex = 5;
+            this.buttonDeleteWork.Text = "Smazat";
+            this.buttonDeleteWork.UseVisualStyleBackColor = true;
+            this.buttonDeleteWork.Click += new System.EventHandler(this.buttonDeleteWork_Click);
             // 
             // label5
             // 
@@ -373,6 +378,18 @@
             this.listViewWorks.UseCompatibleStateImageBehavior = false;
             this.listViewWorks.View = System.Windows.Forms.View.Details;
             // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "WorkId";
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Name";
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Description";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -400,7 +417,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(300, 213);
+            this.button7.Location = new System.Drawing.Point(394, 213);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 7;
@@ -409,7 +426,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(300, 242);
+            this.button8.Location = new System.Drawing.Point(394, 242);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(75, 23);
             this.button8.TabIndex = 6;
@@ -418,7 +435,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(300, 271);
+            this.button9.Location = new System.Drawing.Point(394, 271);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 5;
@@ -428,7 +445,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(300, 25);
+            this.label7.Location = new System.Drawing.Point(394, 25);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(74, 15);
             this.label7.TabIndex = 4;
@@ -436,7 +453,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(300, 43);
+            this.textBox4.Location = new System.Drawing.Point(394, 43);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(105, 23);
             this.textBox4.TabIndex = 3;
@@ -445,9 +462,9 @@
             // 
             this.listView4.FullRowSelect = true;
             this.listView4.GridLines = true;
-            this.listView4.Location = new System.Drawing.Point(0, 24);
+            this.listView4.Location = new System.Drawing.Point(0, 27);
             this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(294, 270);
+            this.listView4.Size = new System.Drawing.Size(388, 270);
             this.listView4.TabIndex = 2;
             this.listView4.UseCompatibleStateImageBehavior = false;
             this.listView4.View = System.Windows.Forms.View.Details;
@@ -501,18 +518,6 @@
             this.label9.TabIndex = 2;
             this.label9.Text = "Uživatel";
             // 
-            // columnHeader11
-            // 
-            this.columnHeader11.Text = "WorkId";
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "Name";
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "Description";
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -554,7 +559,7 @@
         private Panel panel2;
         private Button button1;
         private Button button2;
-        private Button button3;
+        private Button buttonDeleteEmployee;
         private Label label3;
         private TextBox textBoxSearchEmployee;
         private ListView listViewEmployees;
@@ -562,7 +567,7 @@
         private Panel panel3;
         private Button button4;
         private Button button5;
-        private Button button6;
+        private Button buttonDeleteWork;
         private Label label5;
         private TextBox textBoxSearchWorks;
         private ListView listViewWorks;
