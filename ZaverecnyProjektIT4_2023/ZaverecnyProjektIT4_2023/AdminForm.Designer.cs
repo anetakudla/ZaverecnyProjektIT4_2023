@@ -37,22 +37,30 @@
             this.listViewUsers = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.textBoxSearchEmployee = new System.Windows.Forms.TextBox();
+            this.listViewEmployees = new System.Windows.Forms.ListView();
+            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader9 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader10 = new System.Windows.Forms.ColumnHeader();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.listView3 = new System.Windows.Forms.ListView();
+            this.textBoxSearchWorks = new System.Windows.Forms.TextBox();
+            this.listViewWorks = new System.Windows.Forms.ListView();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
@@ -66,7 +74,9 @@
             this.button10 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader11 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader12 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader13 = new System.Windows.Forms.ColumnHeader();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -131,6 +141,7 @@
             this.textBoxSearchUser.Name = "textBoxSearchUser";
             this.textBoxSearchUser.Size = new System.Drawing.Size(105, 23);
             this.textBoxSearchUser.TabIndex = 3;
+            this.textBoxSearchUser.TextChanged += new System.EventHandler(this.textBoxSearchUser_TextChanged);
             // 
             // listViewUsers
             // 
@@ -155,6 +166,10 @@
             // 
             this.columnHeader2.Text = "Username";
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Role";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -172,8 +187,8 @@
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.listView2);
+            this.panel2.Controls.Add(this.textBoxSearchEmployee);
+            this.panel2.Controls.Add(this.listViewEmployees);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Location = new System.Drawing.Point(322, 12);
             this.panel2.Name = "panel2";
@@ -216,23 +231,63 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Vyhledávání:";
             // 
-            // textBox2
+            // textBoxSearchEmployee
             // 
-            this.textBox2.Location = new System.Drawing.Point(511, 43);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(105, 23);
-            this.textBox2.TabIndex = 3;
+            this.textBoxSearchEmployee.Location = new System.Drawing.Point(511, 43);
+            this.textBoxSearchEmployee.Name = "textBoxSearchEmployee";
+            this.textBoxSearchEmployee.Size = new System.Drawing.Size(105, 23);
+            this.textBoxSearchEmployee.TabIndex = 3;
+            this.textBoxSearchEmployee.TextChanged += new System.EventHandler(this.textBoxSearchEmployee_TextChanged);
             // 
-            // listView2
+            // listViewEmployees
             // 
-            this.listView2.FullRowSelect = true;
-            this.listView2.GridLines = true;
-            this.listView2.Location = new System.Drawing.Point(0, 24);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(505, 402);
-            this.listView2.TabIndex = 2;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.Details;
+            this.listViewEmployees.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader7,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader8,
+            this.columnHeader9,
+            this.columnHeader10});
+            this.listViewEmployees.FullRowSelect = true;
+            this.listViewEmployees.GridLines = true;
+            this.listViewEmployees.Location = new System.Drawing.Point(0, 24);
+            this.listViewEmployees.Name = "listViewEmployees";
+            this.listViewEmployees.Size = new System.Drawing.Size(505, 402);
+            this.listViewEmployees.TabIndex = 2;
+            this.listViewEmployees.UseCompatibleStateImageBehavior = false;
+            this.listViewEmployees.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "EmployeeId";
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.DisplayIndex = 3;
+            this.columnHeader7.Text = "Job";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.DisplayIndex = 1;
+            this.columnHeader5.Text = "Firstname";
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.DisplayIndex = 2;
+            this.columnHeader6.Text = "Lastname";
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Birthdate";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Email";
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Phone";
             // 
             // label4
             // 
@@ -251,8 +306,8 @@
             this.panel3.Controls.Add(this.button5);
             this.panel3.Controls.Add(this.button6);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.textBox3);
-            this.panel3.Controls.Add(this.listView3);
+            this.panel3.Controls.Add(this.textBoxSearchWorks);
+            this.panel3.Controls.Add(this.listViewWorks);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Location = new System.Drawing.Point(12, 444);
             this.panel3.Name = "panel3";
@@ -295,23 +350,28 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Vyhledávání:";
             // 
-            // textBox3
+            // textBoxSearchWorks
             // 
-            this.textBox3.Location = new System.Drawing.Point(188, 43);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(105, 23);
-            this.textBox3.TabIndex = 3;
+            this.textBoxSearchWorks.Location = new System.Drawing.Point(188, 43);
+            this.textBoxSearchWorks.Name = "textBoxSearchWorks";
+            this.textBoxSearchWorks.Size = new System.Drawing.Size(105, 23);
+            this.textBoxSearchWorks.TabIndex = 3;
+            this.textBoxSearchWorks.TextChanged += new System.EventHandler(this.textBoxSearchWorks_TextChanged);
             // 
-            // listView3
+            // listViewWorks
             // 
-            this.listView3.FullRowSelect = true;
-            this.listView3.GridLines = true;
-            this.listView3.Location = new System.Drawing.Point(0, 24);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(182, 273);
-            this.listView3.TabIndex = 2;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            this.listView3.View = System.Windows.Forms.View.Details;
+            this.listViewWorks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader11,
+            this.columnHeader12,
+            this.columnHeader13});
+            this.listViewWorks.FullRowSelect = true;
+            this.listViewWorks.GridLines = true;
+            this.listViewWorks.Location = new System.Drawing.Point(0, 24);
+            this.listViewWorks.Name = "listViewWorks";
+            this.listViewWorks.Size = new System.Drawing.Size(182, 273);
+            this.listViewWorks.TabIndex = 2;
+            this.listViewWorks.UseCompatibleStateImageBehavior = false;
+            this.listViewWorks.View = System.Windows.Forms.View.Details;
             // 
             // label6
             // 
@@ -398,9 +458,9 @@
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label8.Location = new System.Drawing.Point(3, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(108, 21);
+            this.label8.Size = new System.Drawing.Size(73, 21);
             this.label8.TabIndex = 1;
-            this.label8.Text = "Zaměstnanci";
+            this.label8.Text = "Zakázky";
             // 
             // panel5
             // 
@@ -441,9 +501,17 @@
             this.label9.TabIndex = 2;
             this.label9.Text = "Uživatel";
             // 
-            // columnHeader3
+            // columnHeader11
             // 
-            this.columnHeader3.Text = "Role";
+            this.columnHeader11.Text = "WorkId";
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Name";
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Description";
             // 
             // AdminForm
             // 
@@ -488,16 +556,16 @@
         private Button button2;
         private Button button3;
         private Label label3;
-        private TextBox textBox2;
-        private ListView listView2;
+        private TextBox textBoxSearchEmployee;
+        private ListView listViewEmployees;
         private Label label4;
         private Panel panel3;
         private Button button4;
         private Button button5;
         private Button button6;
         private Label label5;
-        private TextBox textBox3;
-        private ListView listView3;
+        private TextBox textBoxSearchWorks;
+        private ListView listViewWorks;
         private Label label6;
         private Panel panel4;
         private Button button7;
@@ -514,5 +582,15 @@
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader7;
+        private ColumnHeader columnHeader5;
+        private ColumnHeader columnHeader6;
+        private ColumnHeader columnHeader8;
+        private ColumnHeader columnHeader9;
+        private ColumnHeader columnHeader10;
+        private ColumnHeader columnHeader11;
+        private ColumnHeader columnHeader12;
+        private ColumnHeader columnHeader13;
     }
 }

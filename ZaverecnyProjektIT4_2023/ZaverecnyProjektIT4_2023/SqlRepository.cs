@@ -26,7 +26,7 @@ namespace ZaverecnyProjektIT4_2023
                 sqlConnection.Open();
                 using (SqlCommand cmd = sqlConnection.CreateCommand())
                 {
-                    cmd.CommandText = "INSTER INTO [User] (Username,PasswordHash,PasswordSalt, Role) values(@username,@hash,@salt,@role)";
+                    cmd.CommandText = "INSERT INTO [User] (Username,PasswordHash,PasswordSalt, Role) values(@username,@hash,@salt,@role)";
                     cmd.Parameters.AddWithValue("username", username);
                     cmd.Parameters.AddWithValue("hash", hash);
                     cmd.Parameters.AddWithValue("salt", salt);
@@ -85,6 +85,57 @@ namespace ZaverecnyProjektIT4_2023
                 sqlConnection.Close();
             }
             return users;
+        }
+
+        public List<Employee> GetEmployees(string search)
+        {
+            List<Employee> employees = new List<Employee>();
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM [Employee] WHERE Firstname LIKE @search";
+                    cmd.Parameters.AddWithValue("search", "%" + search + "%");
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var employee = new Employee((int)reader["EmployeeId"], (string)reader["Job"], (string)reader
+                                                            ["FirstName"], (string)reader["LastName"], DateTime.Parse(reader["BirthDate"].ToString()),
+                                                            (string)reader["Email"], (string)reader["Phone"]);
+                            employees.Add(employee);
+                        }
+                    }
+                }
+                sqlConnection.Close();
+            }
+            return employees;
+        }
+
+        public List<Work> GetWorks(string search)
+        {
+            List<Work> works = new List<Work>();
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM [Work] WHERE Name LIKE @search";
+                    cmd.Parameters.AddWithValue("search", "%" + search + "%");
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var work = new Work((int)reader["WorkId"], reader["Name"].ToString()
+                                             , reader["Description"].ToString());
+                            works.Add(work);
+                        }
+                    }
+                }
+                sqlConnection.Close();
+            }
+            return works;
         }
     }
 }
