@@ -26,7 +26,7 @@ namespace ZaverecnyProjektIT4_2023
                 sqlConnection.Open();
                 using (SqlCommand cmd = sqlConnection.CreateCommand())
                 {
-                    cmd.CommandText = "insert into [User] (Username,PasswordHash,PasswordSalt, Role) values(@username,@hash,@salt,@role)";
+                    cmd.CommandText = "INSTER INTO [User] (Username,PasswordHash,PasswordSalt, Role) values(@username,@hash,@salt,@role)";
                     cmd.Parameters.AddWithValue("username", username);
                     cmd.Parameters.AddWithValue("hash", hash);
                     cmd.Parameters.AddWithValue("salt", salt);
@@ -45,8 +45,8 @@ namespace ZaverecnyProjektIT4_2023
                 sqlConnection.Open();
                 using (SqlCommand cmd = sqlConnection.CreateCommand())
                 {
-                    cmd.CommandText = "select * from [User]f where Username=@Username";
-                    cmd.Parameters.AddWithValue("Username", username);
+                    cmd.CommandText = "SELECT * FROM [User] WHERE Username=@username";
+                    cmd.Parameters.AddWithValue("username", username);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
@@ -58,6 +58,33 @@ namespace ZaverecnyProjektIT4_2023
                 sqlConnection.Close();
             }
             return user;
+        }
+
+        public List<User> GetUsers(string search)
+        {
+            List<User> users = new List<User>();
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM [User] WHERE USERNAME LIKE @search";
+                    cmd.Parameters.AddWithValue("search", "%" + search + "%");
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var user = new User((int)reader["Id"],reader["Username"].ToString()
+                                             , (byte[])reader["PasswordHash"]
+                                             , (byte[])reader["PasswordSalt"]
+                                             , (string)reader["Role"]);
+                            users.Add(user);
+                        }
+                    }
+                }
+                sqlConnection.Close();
+            }
+            return users;
         }
     }
 }

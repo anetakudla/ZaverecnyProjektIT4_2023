@@ -18,7 +18,7 @@ namespace ZaverecnyProjektIT4_2023
                 {
                     if (user.Role == "admin")
                     {
-                        AdminForm admin = new AdminForm();
+                        AdminForm admin = new AdminForm(user);
                         admin.Show();
                         this.Hide();
                         return;

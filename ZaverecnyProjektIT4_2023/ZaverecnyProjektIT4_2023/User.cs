@@ -43,5 +43,10 @@ namespace ZaverecnyProjektIT4_2023
             }
             return hash.SequenceEqual(PasswordHash);
         }
+        public ListViewItem ToListViewItem()
+        {
+            return new ListViewItem(new string[] { Id.ToString(), Username, Role });
+        }
+
     }
 }
